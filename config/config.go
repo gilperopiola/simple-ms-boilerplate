@@ -12,8 +12,19 @@ type ConfigActions interface {
 }
 
 type MyConfig struct {
-	PORT  string
-	DEBUG bool
+	PORT     string
+	DEBUG    bool
+	DATABASE struct {
+		TYPE     string
+		USERNAME string
+		PASSWORD string
+		HOSTNAME string
+		PORT     string
+		SCHEMA   string
+
+		CREATE_SCHEMA bool
+		PURGE         bool
+	}
 }
 
 func (config *MyConfig) Setup(env string) {

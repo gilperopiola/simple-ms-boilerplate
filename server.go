@@ -9,6 +9,7 @@ import (
 )
 
 var cfg config.MyConfig
+var db MyDatabase
 var rtr MyRouter
 
 func main() {
@@ -16,6 +17,8 @@ func main() {
 	flag.Parse()
 
 	cfg.Setup(*env)
+	db.Setup(cfg)
+	defer db.Close()
 	rtr.Setup()
 
 	log.Println("server started")
